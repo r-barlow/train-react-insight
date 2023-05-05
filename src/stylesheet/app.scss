@@ -1,0 +1,9 @@
+///
+/// Application style configuration follows the guidelines laid out
+/// by ITCSS (https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/).
+///
+@import "./00_settings/color";
+@import "./00_settings/font";
+@import "./00_settings/config";
+@import "./01_tools/mixin";
+@import "./03_generic/reset";

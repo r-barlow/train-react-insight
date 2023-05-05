@@ -1,3 +1,5 @@
+import "./stylesheet/app.scss";
+
 const App = () => {
     return (
         <>
