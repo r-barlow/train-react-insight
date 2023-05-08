@@ -1,6 +1,11 @@
 import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from "react-router-dom";
 
-import {ROUTE} from "./tool/constant";
+import Login from "./page/Login";
+import AppLayout from "./page/AppLayout";
+import Dashboard from "./page/Dashboard";
+import Budget from "./page/Budget";
+import Transactions from "./page/Transactions";
+import Reports from "./page/Reports";
 
 import AppLayout from "./page/AppLayout";
 
@@ -13,8 +18,14 @@ const appRoute = () => (
 );
 
 const router = createBrowserRouter(
-    createRoutesFromElements(appRoute())
-);
+    createRoutesFromElements(
+        <Route path="/" element={<AppLayout/>}>
+            <Route index element={<Dashboard/>}/>
+            <Route path="budget" element={<Budget/>}/>
+            <Route path="transactions" element={<Transactions/>}/>
+            <Route path="reports" element={<Reports/>}/>
+        </Route>
+    ));
 
 const App = () => {
 

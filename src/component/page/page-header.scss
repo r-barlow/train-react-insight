@@ -1,0 +1,17 @@
+@use "../../stylesheet/00_settings/dimen" as *;
+@use "../../stylesheet/00_settings/util" as *;
+@use "../../stylesheet/01_tools/mixin" as mixins;
+@use "../../stylesheet/01_tools/const" as const;
+
+.page__header__frame{
+  width: map-deep-get($page, header, width);
+  height: map-deep-get($page, header, height);
+  display: flex;
+  align-items: center;
+  padding-left: map-deep-get($page, header, p-l);
+  padding-right: map-deep-get($page, header, p-r);
+
+  @include mixins.media-query(map-get(const.$MEDIA-QUERY-TYPE, MAX-WIDTH), small) {
+    display: none;
+  }
+}

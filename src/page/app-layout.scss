@@ -1,0 +1,22 @@
+@use "../stylesheet/00_settings/dimen" as *;
+@use "../stylesheet/00_settings/util" as *;
+@use "../stylesheet/01_tools/mixin" as mixins;
+@use "../stylesheet/01_tools/const" as const;
+
+header {
+  height: map-deep-get($app, header, height);
+
+  @include mixins.media-query(map-get(const.$MEDIA-QUERY-TYPE, MAX-HEIGHT), small) {
+    width: map-deep-get($app, header, mobile, width);
+    position: absolute;
+    bottom: map-deep-get($app, header, mobile, b);
+    left: map-deep-get($app, header, mobile, l);
+    overflow: hidden;
+  }
+}
+
+main {
+  height: map-deep-get($app, main, height);
+  width: map-deep-get($app, main, width);
+  overflow: hidden;
+}
