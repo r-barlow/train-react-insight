@@ -1,0 +1,58 @@
+@use "../../stylesheet/00_settings/color" as *;
+@use "../../stylesheet/00_settings/dimen" as *;
+@use "../../stylesheet/00_settings/util" as *;
+
+.form__input-group {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  width: map-deep-get($form, input-group, width);
+  margin-bottom: map-deep-get($form, input-group, m-b);
+
+  > .form__form-control {
+    position: relative;
+    flex: 1 1 auto;
+    width: map-deep-get($form, input-group, form-control, width);
+    min-width: 0;
+    margin: 0;
+    padding: map-deep-get($form, input-group, form-control, padding);
+    border-radius: map-deep-get($form, input-group, form-control, border-radius);
+    box-sizing: border-box;
+    font-size: map-deep-get($form, input-group, form-control, font-size);
+    font-weight: 400;
+    border: none;
+    background-color: map-deep-get($material-color, gray, gray-200);
+    background-clip: padding-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    &:focus {
+      outline: map-deep-get($form, input-group, form-control, outline-width) solid map-get($theme-color, primary-500);
+    }
+  }
+}
+
+.form__input-error {
+
+  outline: map-deep-get($form, input-group, form-control, outline-width) solid map-deep-get($material-color, red, red-500) !important;
+
+  &:focus {
+    outline: map-deep-get($form, input-group, form-control, outline-width) solid map-deep-get($material-color, red, red-500) !important;
+  }
+}
+
+.form__input-error__image__frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: map-deep-get($form, input-group, form-control, error, frame-width);
+  height: map-deep-get($form, input-group, form-control, error, frame-height);
+  left: map-deep-get($form, input-group, form-control, error, frame-left);
+}
+
+.form__input-error__image {
+  width: map-deep-get($form, input-group, form-control, error, image-width);
+  height: map-deep-get($form, input-group, form-control, error, image-height);
+}

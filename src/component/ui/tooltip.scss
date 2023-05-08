@@ -1,0 +1,88 @@
+@use "../../stylesheet/00_settings/color" as *;
+@use "../../stylesheet/00_settings/dimen" as *;
+@use "../../stylesheet/00_settings/util" as *;
+
+.tooltip__container {
+  position: absolute;
+  width: map-deep-get($tooltip, container, width);
+  height: map-deep-get($tooltip, container, height);
+  display: inline-block;
+}
+
+.tooltip__container .tooltip__text {
+  visibility: hidden;
+  width: auto;
+  min-width: map-deep-get($tooltip, text, min-width);
+  background-color: map-deep-get($material-color, gray, gray-800);
+  color: map-get($material-color, white);
+  text-align: center;
+  padding: map-deep-get($tooltip, text, p-tb) map-deep-get($tooltip, text, p-lr);
+  border-radius: map-deep-get($tooltip, text, border-radius);
+  position: absolute;
+  z-index: 1001;
+}
+
+.tooltip--top,
+.tooltip--left,
+.tooltip--bottom,
+.tooltip--right {
+  transition-delay: 600ms;
+}
+
+.tooltip--top {
+  bottom: map-get($tooltip, offset);
+}
+
+.tooltip--left {
+  right: map-get($tooltip, offset);
+}
+
+.tooltip--bottom {
+  top: map-get($tooltip, offset);
+}
+
+.tooltip--right {
+  left: map-get($tooltip, offset);
+}
+
+.tooltip--top:after,
+.tooltip--left:after,
+.tooltip--bottom:after,
+.tooltip--right:after {
+  content: " ";
+  position: absolute;
+  border-width: map-get($tooltip, arrow-size);
+  border-style: solid;
+}
+
+.tooltip--top:after {
+  top: 100%;
+  left: 50%;
+  margin-left: (- map-get($tooltip, arrow-size));
+  border-color: #424242 transparent transparent transparent;
+}
+
+.tooltip--left:after {
+  top: 50%;
+  left: 100%;
+  margin-top: (- map-get($tooltip, arrow-size));
+  border-color: transparent transparent transparent #424242;
+}
+
+.tooltip--bottom:after {
+  bottom: 100%;
+  right: 50%;
+  margin-right: (- map-get($tooltip, arrow-size));
+  border-color: transparent transparent #424242 transparent;
+}
+
+.tooltip--right:after {
+  top: 50%;
+  right: 100%;
+  margin-top: (- map-get($tooltip, arrow-size));
+  border-color: transparent #424242 transparent transparent;
+}
+
+.tooltip__container:hover .tooltip__text {
+  visibility: visible;
+}
