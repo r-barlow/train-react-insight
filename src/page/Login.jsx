@@ -49,12 +49,12 @@ const Login = ({setToken}) => {
     const onUsernameChange = useCallback((value) => {
         setError('');
         setUsername({current: value, error: false});
-    }, [username]);
+    }, []);
 
     const onPasswordChange = useCallback((value) => {
         setError('');
         setPassword({current: value, error: false});
-    }, [password]);
+    }, []);
 
     return (<>
         <div className="login__background"></div>

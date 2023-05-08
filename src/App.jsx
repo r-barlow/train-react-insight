@@ -1,6 +1,6 @@
 import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from "react-router-dom";
 import AppLayout from "./page/AppLayout";
-import {getAuthTokenCookie, setAuthTokenCookie} from "./tool/auth.util";
+import {getAuthTokenCookie} from "./tool/auth.util";
 import {useState} from "react";
 import Login from "./page/Login";
 
