@@ -2,14 +2,17 @@
 @use "../../stylesheet/00_settings/dimen" as *;
 @use "../../stylesheet/00_settings/util" as *;
 
-.form__input-group {
-  position: relative;
-  display: flex;
-  align-items: stretch;
-  width: map-deep-get($form, input-group, width);
-  margin-bottom: map-deep-get($form, input-group, m-b);
+.form {
 
-  > .form__form-control {
+  &__input-group {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    width: map-deep-get($form, input-group, width);
+    margin-bottom: map-deep-get($form, input-group, m-b);
+  }
+
+  &__form-control {
     position: relative;
     flex: 1 1 auto;
     width: map-deep-get($form, input-group, form-control, width);
@@ -31,28 +34,30 @@
       outline: map-deep-get($form, input-group, form-control, outline-width) solid map-get($theme-color, primary-500);
     }
   }
-}
 
-.form__input-error {
+  &__input-error {
 
-  outline: map-deep-get($form, input-group, form-control, outline-width) solid map-deep-get($material-color, red, red-500) !important;
-
-  &:focus {
     outline: map-deep-get($form, input-group, form-control, outline-width) solid map-deep-get($material-color, red, red-500) !important;
+
+    &:focus {
+      outline: map-deep-get($form, input-group, form-control, outline-width) solid map-deep-get($material-color, red, red-500) !important;
+    }
+
+    &__image__frame {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      width: map-deep-get($form, input-group, form-control, error, frame-width);
+      height: map-deep-get($form, input-group, form-control, error, frame-height);
+      left: map-deep-get($form, input-group, form-control, error, frame-left);
+    }
+
+    &__image {
+      width: map-deep-get($form, input-group, form-control, error, image-width);
+      height: map-deep-get($form, input-group, form-control, error, image-height);
+    }
+
   }
-}
 
-.form__input-error__image__frame {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  width: map-deep-get($form, input-group, form-control, error, frame-width);
-  height: map-deep-get($form, input-group, form-control, error, frame-height);
-  left: map-deep-get($form, input-group, form-control, error, frame-left);
-}
-
-.form__input-error__image {
-  width: map-deep-get($form, input-group, form-control, error, image-width);
-  height: map-deep-get($form, input-group, form-control, error, image-height);
 }

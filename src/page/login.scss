@@ -5,13 +5,108 @@
 @use "../stylesheet/01_tools/mixin" as mixins;
 @use "../stylesheet/01_tools/const" as const;
 
-.login__background {
-  position: absolute;
-  width: map-deep-get($login, background, width);
-  height: map-deep-get($login, background, height);
-  background: linear-gradient(-45deg, map-get($theme-color, primary-300), map-get($theme-color, primary-700), map-get($theme-color, primary-900));
-  background-size: map-deep-get($login, background, size) map-deep-get($login, background, size);
-  animation: gradient 10s ease infinite;
+.login {
+  &__background {
+    position: absolute;
+    width: map-deep-get($login, background, width);
+    height: map-deep-get($login, background, height);
+    background: linear-gradient(-45deg, map-get($theme-color, primary-300), map-get($theme-color, primary-700), map-get($theme-color, primary-900));
+    background-size: map-deep-get($login, background, size) map-deep-get($login, background, size);
+    animation: gradient 10s ease infinite;
+  }
+
+  &__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    background-color: white;
+    background-clip: border-box;
+    border-radius: map-deep-get($login, card, border-radius);
+    box-shadow: $shadow;
+    z-index: 1000;
+    width: map-deep-get($login, card, mobile, width);
+    min-width: map-deep-get($login, card, mobile, min-width);
+
+    @include mixins.media-query(map-get(const.$MEDIA-QUERY-TYPE, MIN-WIDTH), small) {
+
+      width: map-deep-get($login, card, width);
+      min-width: map-deep-get($login, card, min-width);
+    }
+
+    &__frame {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    &__body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: map-deep-get($login, card, body, p);
+      flex: 1 1 auto;
+    }
+  }
+
+  &__image {
+    width: map-deep-get($login, image, width);
+
+    &__frame {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: map-deep-get($login, image, frame-height);
+    }
+  }
+
+  &__header__text {
+    font-size: map-deep-get($login, header, font-size);
+    font-family: Comfortaa, sans-serif;
+    color: map-deep-get($material-color, gray, gray-800);
+    margin: map-deep-get($login, header, m);
+    padding: map-deep-get($login, header, p);
+    font-weight: 500;
+  }
+
+  &__form {
+    margin-top: map-deep-get($login, form, m-t);
+    width: map-deep-get($login, form, width);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &__error {
+      color: map-deep-get($material-color, red, red-500);
+      font-size: map-deep-get($login, form, error, font-size);
+      margin: 0 0 map-deep-get($login, form, error, m-b);
+      text-align: center;
+    }
+  }
+
+  &__button {
+    width: map-deep-get($login, button, width);
+    margin-top: map-deep-get($login, button, m-t);
+    margin-bottom: map-deep-get($login, button, m-b);
+    display: inline-block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: map-get($theme-color, primary-500);
+    border: none;
+    padding: map-deep-get($login, button, p);
+    font-size: map-deep-get($login, button, font-size);
+    border-radius: map-deep-get($login, button, border-radius);
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  }
 }
 
 @keyframes gradient {
@@ -24,96 +119,4 @@
   100% {
     background-position: 0 50%;
   }
-}
-
-.login__card__frame {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.login__card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: map-deep-get($login, card, min-width);
-  word-wrap: break-word;
-  background-color: white;
-  background-clip: border-box;
-  border-radius: map-deep-get($login, card, border-radius);
-  box-shadow: $shadow;
-  width: map-deep-get($login, card, width);
-  z-index: 1000;
-
-  @include mixins.media-query(map-get(const.$MEDIA-QUERY-TYPE, MAX-WIDTH), small) {
-    width: map-deep-get($login, card, mobile, width);
-    min-width: map-deep-get($login, card, mobile, min-width);
-  }
-}
-
-.login__card__body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: map-deep-get($login, card, body, p);
-  flex: 1 1 auto;
-}
-
-.login__image__frame {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: map-deep-get($login, image, frame-height);
-}
-
-.login__image {
-  width: map-deep-get($login, image, width);
-}
-
-.login__header__text {
-  font-size: map-deep-get($login, header, font-size);
-  font-family: Comfortaa, sans-serif;
-  color: map-deep-get($material-color, gray, gray-800);
-  margin: map-deep-get($login, header, m);
-  padding: map-deep-get($login, header, p);
-  font-weight: 500;
-}
-
-.login__form {
-  margin-top: map-deep-get($login, form, m-t);
-  width: map-deep-get($login, form, width);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.login__button {
-  width: map-deep-get($login, button, width);
-  margin-top: map-deep-get($login, button, m-t);
-  margin-bottom: map-deep-get($login, button, m-b);
-  display: inline-block;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  vertical-align: middle;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-  background-color: map-get($theme-color, primary-500);
-  border: none;
-  padding: map-deep-get($login, button, p);
-  font-size: map-deep-get($login, button, font-size);
-  border-radius: map-deep-get($login, button, border-radius);
-  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-}
-
-.login__form__error {
-  color: map-deep-get($material-color, red, red-500);
-  font-size: map-deep-get($login, form, error, font-size);
-  margin: 0 0 map-deep-get($login, form, error, m-b);
-  text-align: center;
 }
