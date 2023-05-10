@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 import "./tooltip.scss";
 
-const Tooltip = (props) =>{
+const Tooltip = (props) => {
 
     const position = `tooltip__text tooltip--${props.position}`;
 

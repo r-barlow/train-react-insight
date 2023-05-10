@@ -1,60 +1,10 @@
-import {useCallback, useState} from "react";
-import {getToken, setAuthTokenCookie} from "../tool/auth.util";
-import Input from "../component/form/Input";
 import PropTypes from "prop-types";
+
+import Input from "../component/form/Input";
 
 import './login.scss';
 
-const Login = ({setToken}) => {
-
-    const [username, setUsername] = useState({current: '', error: false});
-    const [password, setPassword] = useState({current: '', error: false});
-    const [error, setError] = useState('');
-
-    const handleSubmit = async e => {
-
-        e.preventDefault();
-
-        if (username.current === undefined || username.current.length === 0) {
-            setUsername({current: username.current, error: true});
-            return;
-        }
-
-        if (password.current === undefined || password.current.length === 0) {
-            setPassword({current: password.current, error: true});
-            return;
-        }
-
-        const response = await getToken(username.current, password.current);
-
-        if (!response.success) {
-            if (response.status === 404 || response.status === 403 || response.status === 401) {
-                setError("Invalid username/password!");
-            } else {
-                setError("Unknown server error!");
-            }
-            return;
-        }
-
-        const token = response.data['token'];
-        if (token === undefined) {
-            setError("Unknown server error!");
-            return;
-        }
-
-        setToken(token);
-        setAuthTokenCookie(token)
-    }
-
-    const onUsernameChange = useCallback((value) => {
-        setError('');
-        setUsername({current: value, error: false});
-    }, []);
-
-    const onPasswordChange = useCallback((value) => {
-        setError('');
-        setPassword({current: value, error: false});
-    }, []);
+const Login = ({handleSubmit, onUsernameChange, onPasswordChange, username, password, error}) => {
 
     return (<>
         <div className="login__background"></div>
@@ -84,7 +34,12 @@ const Login = ({setToken}) => {
 };
 
 Login.propTypes = {
-    setToken: PropTypes.func.isRequired
+    handleSubmit: PropTypes.func.isRequired,
+    onUsernameChange: PropTypes.func.isRequired,
+    onPasswordChange: PropTypes.func.isRequired,
+    username: PropTypes.object.isRequired,
+    password: PropTypes.object.isRequired,
+    error: PropTypes.string.isRequired
 };
 
 export default Login;

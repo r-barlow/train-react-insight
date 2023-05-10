@@ -1,6 +1,8 @@
-import Tooltip from "../ui/Tooltip";
-import {POSITION} from "../../tool/constant";
 import PropTypes from "prop-types";
+
+import {POSITION} from "../../tool/constant";
+
+import Tooltip from "../ui/Tooltip";
 
 import "./input.scss";
 
