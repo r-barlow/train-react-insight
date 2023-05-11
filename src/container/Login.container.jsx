@@ -8,38 +8,40 @@ import PropTypes from "prop-types";
 
 const LoginContainer = ({setToken}) => {
 
-    const [username, setUsername] = useState({current: '', error: false});
-    const [password, setPassword] = useState({current: '', error: false});
-    const [error, setError] = useState('');
+    const [form, setForm] = useState({
+        username: {value: '', error: false},
+        password: {value: '', error: false},
+        error: ''
+    });
 
     const handleSubmit = async e => {
 
         e.preventDefault();
 
-        if (username.current === undefined || username.current.length === 0) {
-            setUsername({current: username.current, error: true});
+        if (form.username.value === undefined || form.username.value.length === 0) {
+            setForm({...form, username: {...form.username, error: true}});
             return;
         }
 
-        if (password.current === undefined || password.current.length === 0) {
-            setPassword({current: password.current, error: true});
+        if (form.password.value === undefined || form.password.value.length === 0) {
+            setForm({...form, password: {...form.password, error: true}});
             return;
         }
 
-        const response = await getToken(username.current, password.current);
+        const response = await getToken(form.username.value, form.password.value);
 
         if (!response.success) {
             if (response.status === 404 || response.status === 403 || response.status === 401) {
-                setError("Invalid username/password!");
+                setForm({...form, error: "Invalid username/password!"});
             } else {
-                setError("Unknown server error!");
+                setForm({...form, error: "Unknown server error!"});
             }
             return;
         }
 
         const token = response.data['token'];
         if (token === undefined) {
-            setError("Unknown server error!");
+            setForm({...form, error: "Unknown server error!"});
             return;
         }
 
@@ -47,21 +49,12 @@ const LoginContainer = ({setToken}) => {
         setAuthTokenCookie(token)
     }
 
-    const onUsernameChange = useCallback((value) => {
-        setError('');
-        setUsername({current: value, error: false});
-    }, []);
-
-    const onPasswordChange = useCallback((value) => {
-        setError('');
-        setPassword({current: value, error: false});
+    const onChange = useCallback((newState) => {
+        setForm({...form, ...newState});
     }, []);
 
     return (
-        <>
-            <Login handleSubmit={handleSubmit} onUsernameChange={onUsernameChange}
-                   onPasswordChange={onPasswordChange} username={username} password={password} error={error}/>
-        </>
+        <Login handleSubmit={handleSubmit} onChange={onChange} form={form}/>
     );
 };
 

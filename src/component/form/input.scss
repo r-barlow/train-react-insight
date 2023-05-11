@@ -1,6 +1,27 @@
 @use "../../stylesheet/00_settings/color" as *;
-@use "../../stylesheet/00_settings/dimen" as *;
 @use "../../stylesheet/00_settings/util" as *;
+
+$dimen: (
+        input-group: (
+                width: 100%,
+                m-b: 1.5rem,
+                form-control: (
+                        width: 1%,
+                        font-size: 1rem,
+                        padding: .6rem,
+                        border-radius: .2rem,
+                        outline-width: 2px,
+                        error: (
+                                frame-width: 40px,
+                                frame-height: 100%,
+                                frame-left: calc(100% - 40px),
+                                image-width: 24px,
+                                image-height: 24px,
+                                font-size: 1rem
+                        )
+                )
+        )
+);
 
 .form {
 
@@ -8,20 +29,20 @@
     position: relative;
     display: flex;
     align-items: stretch;
-    width: map-deep-get($form, input-group, width);
-    margin-bottom: map-deep-get($form, input-group, m-b);
+    width: map-deep-get($dimen, input-group, width);
+    margin-bottom: map-deep-get($dimen, input-group, m-b);
   }
 
   &__form-control {
     position: relative;
     flex: 1 1 auto;
-    width: map-deep-get($form, input-group, form-control, width);
+    width: map-deep-get($dimen, input-group, form-control, width);
     min-width: 0;
     margin: 0;
-    padding: map-deep-get($form, input-group, form-control, padding);
-    border-radius: map-deep-get($form, input-group, form-control, border-radius);
+    padding: map-deep-get($dimen, input-group, form-control, padding);
+    border-radius: map-deep-get($dimen, input-group, form-control, border-radius);
     box-sizing: border-box;
-    font-size: map-deep-get($form, input-group, form-control, font-size);
+    font-size: map-deep-get($dimen, input-group, form-control, font-size);
     font-weight: 400;
     border: none;
     background-color: map-deep-get($material-color, gray, gray-200);
@@ -31,16 +52,16 @@
     appearance: none;
 
     &:focus {
-      outline: map-deep-get($form, input-group, form-control, outline-width) solid map-get($theme-color, primary-500);
+      outline: map-deep-get($dimen, input-group, form-control, outline-width) solid map-get($theme-color, primary-500);
     }
   }
 
   &__input-error {
 
-    outline: map-deep-get($form, input-group, form-control, outline-width) solid map-deep-get($material-color, red, red-500) !important;
+    outline: map-deep-get($dimen, input-group, form-control, outline-width) solid map-deep-get($material-color, red, red-500) !important;
 
     &:focus {
-      outline: map-deep-get($form, input-group, form-control, outline-width) solid map-deep-get($material-color, red, red-500) !important;
+      outline: map-deep-get($dimen, input-group, form-control, outline-width) solid map-deep-get($material-color, red, red-500) !important;
     }
 
     &__image__frame {
@@ -48,14 +69,14 @@
       justify-content: center;
       align-items: center;
       position: absolute;
-      width: map-deep-get($form, input-group, form-control, error, frame-width);
-      height: map-deep-get($form, input-group, form-control, error, frame-height);
-      left: map-deep-get($form, input-group, form-control, error, frame-left);
+      width: map-deep-get($dimen, input-group, form-control, error, frame-width);
+      height: map-deep-get($dimen, input-group, form-control, error, frame-height);
+      left: map-deep-get($dimen, input-group, form-control, error, frame-left);
     }
 
     &__image {
-      width: map-deep-get($form, input-group, form-control, error, image-width);
-      height: map-deep-get($form, input-group, form-control, error, image-height);
+      width: map-deep-get($dimen, input-group, form-control, error, image-width);
+      height: map-deep-get($dimen, input-group, form-control, error, image-height);
     }
 
   }

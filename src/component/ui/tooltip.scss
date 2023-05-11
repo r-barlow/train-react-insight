@@ -1,13 +1,27 @@
 @use "../../stylesheet/00_settings/color" as *;
-@use "../../stylesheet/00_settings/dimen" as *;
 @use "../../stylesheet/00_settings/util" as *;
+
+$dimen: (
+        offset: calc(100% + 15px),
+        container: (
+                width: 100%,
+                height: 100%
+        ),
+        text: (
+                min-width: 120px,
+                p-tb: .4rem,
+                p-lr: 0,
+                border-radius: .3rem
+        ),
+        arrow-size: 5px
+);
 
 .tooltip {
 
   &__container {
     position: absolute;
-    width: map-deep-get($tooltip, container, width);
-    height: map-deep-get($tooltip, container, height);
+    width: map-deep-get($dimen, container, width);
+    height: map-deep-get($dimen, container, height);
     display: inline-block;
   }
 
@@ -18,12 +32,12 @@
   &__text {
     visibility: hidden;
     width: auto;
-    min-width: map-deep-get($tooltip, text, min-width);
+    min-width: map-deep-get($dimen, text, min-width);
     background-color: map-deep-get($material-color, gray, gray-800);
     color: map-get($material-color, white);
     text-align: center;
-    padding: map-deep-get($tooltip, text, p-tb) map-deep-get($tooltip, text, p-lr);
-    border-radius: map-deep-get($tooltip, text, border-radius);
+    padding: map-deep-get($dimen, text, p-tb) map-deep-get($dimen, text, p-lr);
+    border-radius: map-deep-get($dimen, text, border-radius);
     position: absolute;
     z-index: 1001;
   }
@@ -37,51 +51,51 @@
     &:after {
       content: " ";
       position: absolute;
-      border-width: map-get($tooltip, arrow-size);
+      border-width: map-get($dimen, arrow-size);
       border-style: solid;
     }
   }
 
   &--top {
-    bottom: map-get($tooltip, offset);
+    bottom: map-get($dimen, offset);
 
     &:after {
       top: 100%;
       left: 50%;
-      margin-left: (- map-get($tooltip, arrow-size));
+      margin-left: (- map-get($dimen, arrow-size));
       border-color: #424242 transparent transparent transparent;
     }
   }
 
   &--left {
-    right: map-get($tooltip, offset);
+    right: map-get($dimen, offset);
 
     &:after {
       top: 50%;
       left: 100%;
-      margin-top: (- map-get($tooltip, arrow-size));
+      margin-top: (- map-get($dimen, arrow-size));
       border-color: transparent transparent transparent #424242;
     }
   }
 
   &--bottom {
-    top: map-get($tooltip, offset);
+    top: map-get($dimen, offset);
 
     &:after {
       bottom: 100%;
       right: 50%;
-      margin-right: (- map-get($tooltip, arrow-size));
+      margin-right: (- map-get($dimen, arrow-size));
       border-color: transparent transparent #424242 transparent;
     }
   }
 
   &--right {
-    left: map-get($tooltip, offset);
+    left: map-get($dimen, offset);
 
     &:after {
       top: 50%;
       right: 100%;
-      margin-top: (- map-get($tooltip, arrow-size));
+      margin-top: (- map-get($dimen, arrow-size));
       border-color: transparent #424242 transparent transparent;
     }
   }
