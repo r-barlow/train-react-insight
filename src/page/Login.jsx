@@ -2,6 +2,8 @@ import PropTypes from "prop-types";
 
 import Input from "../component/form/Input";
 
+import {ReactComponent as Logo} from "../icon/insight.svg";
+
 import './login.scss';
 
 const Login = ({handleSubmit, onChange, form}) => {
@@ -11,7 +13,7 @@ const Login = ({handleSubmit, onChange, form}) => {
         <section className="login__card__frame">
             <article className="login__card">
                 <div className="login__image__frame">
-                    <img className="login__image" src="/images/insight.svg" alt="Insight logo"/>
+                    <Logo className="login__image" alt="Insight logo"/>
                 </div>
                 <h1 className="login__header__text">Insight</h1>
                 <form className="login__form" onSubmit={handleSubmit}>

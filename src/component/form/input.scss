@@ -3,15 +3,19 @@
 
 .form {
 
-  &__input-group {
-    position: relative;
-    display: flex;
-    align-items: stretch;
-    width: 100%;
-    margin-bottom: 1.5rem;
+  &__input {
+
+    &__group {
+      position: relative;
+      display: flex;
+      align-items: stretch;
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+
   }
 
-  &__form-control {
+  &__control {
     position: relative;
     flex: 1 1 auto;
     width: 1%;
@@ -32,31 +36,6 @@
     &:focus {
       outline: 2px solid map-get($theme-color, primary-500);
     }
-  }
-
-  &__input-error {
-
-    outline: 2px solid map-deep-get($material-color, red, red-500);
-
-    &:focus {
-      outline: 2px solid map-deep-get($material-color, red, red-500);
-    }
-
-    &__image__frame {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: absolute;
-      width: 40px;
-      height: 100%;
-      left: calc(100% - 40px);
-    }
-
-    &__image {
-      width: 24px;
-      height: 24px;
-    }
-
   }
 
 }
