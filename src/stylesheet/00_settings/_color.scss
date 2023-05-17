@@ -1,5 +1,8 @@
 $theme-color: (
+        primary-300: #64B5F6,
         primary-500: #03A9F4,
+        primary-700: #1976D2,
+        primary-900: #0D47A1,
         secondary-500: #4CAF50
 );
 
@@ -17,6 +20,9 @@ $material-color: (
                 gray-700: #616161,
                 gray-800: #424242,
                 gray-900: #212121
+        ),
+        red: (
+                red-500: #F44336
         ),
         black: #000
 );

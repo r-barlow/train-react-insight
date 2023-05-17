@@ -1,0 +1,40 @@
+@use "../../stylesheet/00_settings/color" as *;
+@use "../../stylesheet/00_settings/util" as *;
+
+.input {
+
+  &__group {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  &__error {
+    outline: 2px solid map-deep-get($material-color, red, red-500) !important;
+  }
+
+  &__control {
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0;
+    margin: 0;
+    padding: .6rem;
+    border-radius: .2rem;
+    box-sizing: border-box;
+    font-size: 1rem;
+    font-weight: 400;
+    border: none;
+    background-color: map-deep-get($material-color, gray, gray-200);
+    background-clip: padding-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    &:focus {
+      outline: 2px solid map-get($theme-color, primary-500);
+    }
+  }
+}
