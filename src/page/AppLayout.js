@@ -1,6 +1,8 @@
 import {Outlet} from "react-router-dom";
-import PageHeader from "../component/page/PageHeader";
 
+import {getAuthTokenCookie} from "../tool/auth.util";
+
+import PageHeader from "../component/page/PageHeader";
 import LoginContainer from "../container/Login.container";
 
 import "./app-layout.scss";
