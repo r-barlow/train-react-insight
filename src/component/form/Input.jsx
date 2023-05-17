@@ -5,9 +5,9 @@ import InputRequired from "./InputRequired";
 import "./input.scss";
 
 const Input = ({type, placeholder, hasError, onChange}) => (
-    <div className="form__input__group">
+    <div className="input__group">
         <input type={type}
-               className={`form__control${hasError ? " form__input__error" : ""}`}
+               className={`input__control${hasError ? " input__error" : ""}`}
                placeholder={placeholder}
                aria-label={placeholder}
                onChange={e => {

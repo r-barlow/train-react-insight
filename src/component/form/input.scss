@@ -1,22 +1,18 @@
 @use "../../stylesheet/00_settings/color" as *;
 @use "../../stylesheet/00_settings/util" as *;
 
-.form {
+.input {
 
-  &__input {
+  &__group {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
 
-    &__group {
-      position: relative;
-      display: flex;
-      align-items: stretch;
-      width: 100%;
-      margin-bottom: 1.5rem;
-    }
-
-    &__error {
-      outline: 2px solid map-deep-get($material-color, red, red-500) !important;
-    }
-
+  &__error {
+    outline: 2px solid map-deep-get($material-color, red, red-500) !important;
   }
 
   &__control {
@@ -41,5 +37,4 @@
       outline: 2px solid map-get($theme-color, primary-500);
     }
   }
-
 }
