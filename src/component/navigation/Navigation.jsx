@@ -10,17 +10,24 @@ const Navigation = ({toggle, isToggled}) => {
 
     const {nav} = useNavigation();
 
+    const handleClick = (item) => {
+        nav.navigate(item);
+        toggle();
+    };
+
     return (
         <>
             <nav className={!isToggled ? "nav nav--hidden" : "nav"}>
-                {NAVIGATION_ITEMS.map(item => {
-                    // @todo: Create navigation header & item component.
-                    return <div key={item.tag}>{item.title}</div>
-                })}
+                <NavigationHeader toggle={toggle}/>
+                {NAVIGATION_ITEMS.map(item =>
+                    <NavigationItem key={item.tag}
+                                    navItem={item}
+                                    active={item.tag === nav.current.tag}
+                                    onClick={() => handleClick(item)}/>)}
             </nav>
             <section className="action-bar">
                 <MenuIcon className="action-bar__menu" alt="open menu" onClick={toggle}/>
-                <h2 className="action-bar__text">{nav.title}</h2>
+                <h2 className="action-bar__text">{nav.current.title}</h2>
             </section>
             <div className={isToggled ? "nav__shadow" : "nav__shadow nav__shadow--hidden"} onClick={toggle}/>
         </>
