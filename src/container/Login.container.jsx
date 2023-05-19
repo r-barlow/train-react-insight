@@ -35,7 +35,7 @@ const LoginContainer = () => {
             return;
         }
 
-        dispatch(getAuthToken(form.username.value, form.password.value, navigate, handleOnError));
+        dispatch(getAuthToken(form, navigate, handleOnError));
     }
 
     const onChange = useCallback((newState) => {

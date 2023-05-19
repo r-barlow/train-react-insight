@@ -13,7 +13,7 @@ export function* performAuthToken({username, password, navigate, onError, onComp
 
         const {data} = yield call(axios, endpoint, requestOptions);
 
-        const token = data['token'];
+        const token = data.token;
 
         yield call(setAuthTokenCookie, token);
 
