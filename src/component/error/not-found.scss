@@ -1,0 +1,66 @@
+@use "../../stylesheet/00_settings/color" as *;
+@use "../../stylesheet/00_settings/util" as *;
+@use "../../stylesheet/01_tools/mixin" as mixins;
+@use "../../stylesheet/01_tools/const" as const;
+
+.error{
+
+  &__frame{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__title {
+    font-size: 9rem;
+    font-family: 'Allerta', sans-serif;
+    font-weight: 400;
+    color: map-deep-get($material-color, gray, gray-900);
+    margin: 0 0 1rem;
+
+    @include mixins.media-query(map-get(const.$MEDIA-QUERY-TYPE, MIN-WIDTH), small){
+      font-size: 12rem;
+      margin-bottom: 1.5rem;
+    }
+
+    &--amber {
+      font-family: inherit;
+      color: map-deep-get($material-color, amber, amber-500);
+    }
+  }
+
+  &__subtitle {
+    font-size: 2.25rem;
+    color: map-deep-get($material-color, amber, amber-500);
+    margin: 0 0 1rem;
+
+    @include mixins.media-query(map-get(const.$MEDIA-QUERY-TYPE, MIN-WIDTH), small){
+      font-size: 3rem;
+    }
+  }
+
+  &__description {
+    font-size: 1.5rem;
+    color: map-deep-get($material-color, gray, gray-900);
+    text-align: center;
+    margin: 0 2rem 1rem;
+
+    @include mixins.media-query(map-get(const.$MEDIA-QUERY-TYPE, MIN-WIDTH), small){
+      font-size: 2.25rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  &__button {
+    background-color: map-deep-get($material-color, amber, amber-500);
+    border: none;
+    border-radius: 2rem;
+    padding: .75rem 1.5rem;
+    font-weight: 500;
+    color: map-get($material-color, white);
+    margin: 1.5rem 0;
+    font-size: 1rem;
+  }
+}
