@@ -21,8 +21,39 @@ export const RESPONSE_STATUS = Object.freeze({
 });
 
 export const ROUTE = Object.freeze({
+    HOME: "",
     DASHBOARD: "dashboard",
     BUDGET: "budget",
     TRANSACTIONS: "transactions",
-    REPORTS: "reports"
-})
+    REPORTS: "reports",
+    LOGOUT: "logout"
+});
+
+export const NAVIGATION_ITEMS = Object.freeze([
+    {
+        title: "Dashboard",
+        icon: "./images/dashboard.svg",
+        tag: ROUTE.DASHBOARD
+    },
+    {
+        title: "Budget",
+        icon: "./images/budget.svg",
+        tag: ROUTE.BUDGET
+    },
+    {
+        title: "Transactions",
+        icon: "./images/transactions.svg",
+        tag: ROUTE.TRANSACTIONS
+    },
+    {
+        title: "Reports",
+        icon: "./images/reports.svg",
+        tag: ROUTE.REPORTS
+    },
+    {
+        title: "Logout",
+        icon: "./images/logout.svg",
+        style: {marginTop: 'auto'},
+        tag: ROUTE.LOGOUT
+    }
+]);
