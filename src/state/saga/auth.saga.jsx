@@ -6,10 +6,10 @@ import {getAuthorizeRequest} from "../tool/api/auth.endpoint";
 import {RESPONSE_STATUS} from "../../tool/constant";
 import {GET_AUTH_TOKEN} from "../action/auth.actions";
 
-export function* performAuthToken({username, password, navigate, onError, onComplete}) {
+export function* performAuthToken({payload, navigate, onError, onComplete}) {
 
     try {
-        const [endpoint, requestOptions] = getAuthorizeRequest({username, password});
+        const [endpoint, requestOptions] = getAuthorizeRequest(payload);
 
         const {data} = yield call(axios, endpoint, requestOptions);
 

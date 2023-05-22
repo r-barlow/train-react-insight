@@ -4,10 +4,10 @@ import {REQUEST_METHOD} from "../../../tool/constant";
 const getAuthEndpoint = `${API_BASE_URL}/auth`;
 
 const getAuthorizeEndpoint = () => `${getAuthEndpoint}/authorize`;
-export const getAuthorizeRequest = (data) => [
+export const getAuthorizeRequest = (payload) => [
     getAuthorizeEndpoint(),
     {
         method: REQUEST_METHOD.POST,
-        data
+        payload
     }
 ]
