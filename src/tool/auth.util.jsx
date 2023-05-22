@@ -33,3 +33,8 @@ const parseJwt = (token) => {
         return null;
     }
 }
+
+export const getUserNameFromCookie = () => {
+    const token = getAuthTokenCookie();
+    return parseJwt(token)['sub'];
+}

@@ -3,12 +3,12 @@ import {ReactComponent as CloseIcon} from "../../icon/close.svg";
 import PropTypes from "prop-types";
 
 import "./navigation-header.scss";
+import UserDetailsComponent from "../../container/UserDetails.component";
 
 const NavigationHeader = ({toggle}) => {
-    // @todo: add user details
     return (
         <section className="header">
-            <div className="header__user-details"></div>
+            <UserDetailsComponent isMobile={true} />
             <Logo className="header__logo" alt="insight logo"/>
             <CloseIcon className="header__close" alt="close menu" onClick={toggle}/>
         </section>

@@ -1,0 +1,60 @@
+@use '../../stylesheet/01_tools/mixin' as mixins;
+@use '../../stylesheet/01_tools/const' as const;
+
+.user-detail {
+
+  &__frame {
+    display: flex;
+    align-items: center;
+    margin-left: 0;
+
+    @include mixins.media-query(map-get(const.$MEDIA-QUERY-TYPE, MIN-WIDTH), small) {
+      margin-left: auto;
+    }
+  }
+
+  &--mobile {
+    display: flex;
+
+    @include mixins.media-query(map-get(const.$MEDIA-QUERY-TYPE, MIN-WIDTH), small) {
+      display: none;
+    }
+  }
+
+  &__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #03A9F4;
+
+    @include mixins.media-query(map-get(const.$MEDIA-QUERY-TYPE, MIN-WIDTH), small) {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &__initial {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  &__full-name,
+  &__username {
+    display: block;
+    font-weight: 300;
+    padding-left: .8rem;
+    margin: 0;
+    font-size: 1rem;
+    white-space: nowrap;
+  }
+
+  &__full-name {
+    font-weight: 500;
+  }
+
+}
+
