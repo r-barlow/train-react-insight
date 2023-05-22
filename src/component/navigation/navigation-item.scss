@@ -53,7 +53,9 @@
   }
 
   &--active &__selector {
-    display: block;
+    @include mixins.media-query(map-get(const.$MEDIA-QUERY-TYPE, MIN-WIDTH), small) {
+      display: block;
+    }
   }
 }
 
