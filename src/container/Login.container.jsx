@@ -1,18 +1,25 @@
 import {useCallback, useState} from "react";
+import {useDispatch} from "react-redux";
+import {useNavigate} from "react-router-dom";
 
-import {getToken, setAuthTokenCookie} from "../tool/auth.util";
+import {getAuthToken} from "../state/action/auth.actions";
 
 import Login from "../page/Login";
 
-import PropTypes from "prop-types";
+const LoginContainer = () => {
 
-const LoginContainer = ({setToken}) => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [form, setForm] = useState({
         username: {value: '', error: false},
         password: {value: '', error: false},
         error: ''
     });
+
+    const handleOnError = message => {
+        setForm({...form, error: message});
+    };
 
     const handleSubmit = async e => {
 
@@ -28,25 +35,12 @@ const LoginContainer = ({setToken}) => {
             return;
         }
 
-        const response = await getToken(form.username.value, form.password.value);
-
-        if (!response.success) {
-            if (response.status === 404 || response.status === 403 || response.status === 401) {
-                setForm({...form, error: "Invalid username/password!"});
-            } else {
-                setForm({...form, error: "Unknown server error!"});
-            }
-            return;
+        const payload = {
+            username: form.username.value,
+            password: form.password.value
         }
 
-        const token = response.data['token'];
-        if (token === undefined) {
-            setForm({...form, error: "Unknown server error!"});
-            return;
-        }
-
-        setToken(token);
-        setAuthTokenCookie(token)
+        dispatch(getAuthToken(payload, navigate, handleOnError));
     }
 
     const onChange = useCallback((newState) => {
@@ -56,10 +50,6 @@ const LoginContainer = ({setToken}) => {
     return (
         <Login handleSubmit={handleSubmit} onChange={onChange} form={form}/>
     );
-};
-
-LoginContainer.propTypes = {
-    setToken: PropTypes.func.isRequired
 };
 
 export default LoginContainer;

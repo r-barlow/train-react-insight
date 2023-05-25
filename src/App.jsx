@@ -1,29 +1,22 @@
 import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from "react-router-dom";
-import {useState} from "react";
 
-import {getAuthTokenCookie} from "./tool/auth.util";
+import {ROUTE} from "./tool/constant";
 
 import AppLayout from "./page/AppLayout";
-import LoginContainer from "./container/Login.container";
 
 import "./stylesheet/app.scss";
 
+const appRoute = () => (
+    <Route path="/" element={<AppLayout/>}>
+        <Route exact path={ROUTE.DASHBOARD} element={<AppLayout/>}/>
+    </Route>
+);
+
 const router = createBrowserRouter(
-    createRoutesFromElements(
-        <Route path="/" element={<AppLayout/>}/>
-    )
+    createRoutesFromElements(appRoute())
 );
 
 const App = () => {
-
-    const [, setToken] = useState('');
-    const tokenCookie = getAuthTokenCookie();
-
-    if (!tokenCookie) {
-        return (
-            <LoginContainer setToken={setToken}/>
-        );
-    }
 
     return (
         <RouterProvider router={router}/>
