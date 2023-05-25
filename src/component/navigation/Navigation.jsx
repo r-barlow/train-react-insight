@@ -1,15 +1,14 @@
-import {useContext} from "react";
 import PropTypes from "prop-types";
 
 import {NAVIGATION_ITEMS} from "../../tool/constant";
-import {NavigationContext} from "../../context/Navigation.context";
+import useNavigation from "../../hook/useNavigation";
 
 import {ReactComponent as MenuIcon} from "../../icon/menu.svg";
 import "./navigation.scss";
 
 const Navigation = ({toggle, isToggled}) => {
 
-    const {nav} = useContext(NavigationContext);
+    const {nav} = useNavigation();
 
     return (
         <>

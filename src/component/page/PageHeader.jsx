@@ -1,9 +1,14 @@
+import useNavigation from "../../hook/useNavigation";
+
 import "./page-header.scss";
 
-const PageHeader = (props) => {
+const PageHeader = () => {
+
+    const {nav} = useNavigation();
+
     return (
         <section className="page__header">
-            <h3>{props.title}</h3>
+            <h3>{nav.title}</h3>
         </section>
     );
 };
