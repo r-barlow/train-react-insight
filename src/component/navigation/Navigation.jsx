@@ -5,11 +5,13 @@ import useNavigation from "../../hook/useNavigation";
 
 import NavigationHeader from "./NavigationHeader";
 import NavigationItem from "./NavigationItem";
+import AppActionBar from "../ui/AppActionBar";
 
 import {ReactComponent as MenuIcon} from "../../icon/menu.svg";
 import "./navigation.scss";
 
-const Navigation = ({toggle, isToggled}) => {
+
+const Navigation = ({toggle, isToggled, onActionClick}) => {
 
     const {nav} = useNavigation();
 
@@ -27,10 +29,11 @@ const Navigation = ({toggle, isToggled}) => {
                                     active={item.tag === nav.tag}
                                     onClick={() => handleClick(item)}/>)}
             </nav>
-            <section className="action-bar">
+
+            <AppActionBar onActionClick={onActionClick}>
                 <MenuIcon className="action-bar__menu" alt="open menu" onClick={toggle}/>
-                <h2 className="action-bar__text">{nav.title}</h2>
-            </section>
+                <h2 className="action-bar__text">{nav.current.title}</h2>
+            </AppActionBar>
             <div className={isToggled ? "nav__shadow" : "nav__shadow nav__shadow--hidden"} onClick={toggle}/>
         </>
     )

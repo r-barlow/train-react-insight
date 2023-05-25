@@ -4,6 +4,8 @@ import {ReactComponent as TransactionsIcon} from "../icon/transactions.svg";
 import {ReactComponent as ReportsIcon} from "../icon/reports.svg";
 import {ReactComponent as LogoutIcon} from "../icon/logout.svg";
 
+import {ReactComponent as AddActionIcon} from "../icon/add.svg";
+
 export const POSITION = Object.freeze({
         TOP: "top",
         LEFT: "left",
@@ -39,27 +41,33 @@ export const NAVIGATION_ITEMS = Object.freeze([
     {
         title: "Dashboard",
         icon: DashboardIcon,
-        tag: ROUTE.DASHBOARD
+        tag: ROUTE.DASHBOARD,
+        showAction: false
     },
     {
         title: "Budget",
         icon: BudgetIcon,
-        tag: ROUTE.BUDGET
+        tag: ROUTE.BUDGET,
+        showAction: false
     },
     {
         title: "Transactions",
         icon: TransactionsIcon,
-        tag: ROUTE.TRANSACTIONS
+        tag: ROUTE.TRANSACTIONS,
+        showAction: true,
+        actionIcon: AddActionIcon
     },
     {
         title: "Reports",
         icon: ReportsIcon,
-        tag: ROUTE.REPORTS
+        tag: ROUTE.REPORTS,
+        showAction: false
     },
     {
         title: "Logout",
         icon: LogoutIcon,
         style: {marginTop: 'auto'},
-        tag: ROUTE.LOGOUT
+        tag: ROUTE.LOGOUT,
+        showAction: false
     }
 ]);

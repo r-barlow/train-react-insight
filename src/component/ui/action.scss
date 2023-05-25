@@ -1,0 +1,39 @@
+@use '../../stylesheet/00_settings/color' as colors;
+@use '../../stylesheet/00_settings/extra' as extras;
+@use "../../stylesheet/01_tools/mixin" as mixins;
+@use "../../stylesheet/01_tools/const" as const;
+
+.action {
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: extras.$shadow-top;
+    position: absolute;
+    bottom: 42px;
+    right: 58px;
+    width: 56px;
+    height: 56px;
+    border-radius: 28px;
+    background: map-get(colors.$theme-color, secondary-500);
+    z-index: 1;
+
+    @include mixins.media-query(map-get(const.$MEDIA-QUERY-TYPE, MIN-WIDTH), small) {
+      display: none;
+    }
+
+    &:active {
+      transform: translateY(-2px);
+      box-shadow: 0 -.1rem 1rem rgba(map-get(colors.$material-color, black), .15);
+    }
+  }
+
+  &__icon {
+    filter: brightness(0) invert(1);
+
+    @include mixins.media-query(map-get(const.$MEDIA-QUERY-TYPE, MIN-WIDTH), small) {
+      display: none;
+    }
+  }
+}

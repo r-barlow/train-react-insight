@@ -1,0 +1,36 @@
+@use '../../stylesheet/00_settings/color' as colors;
+@use '../../stylesheet/00_settings/extra' as extras;
+@use "../../stylesheet/01_tools/mixin" as mixins;
+@use "../../stylesheet/01_tools/const" as const;
+
+.app-action-bar {
+  align-items: center;
+  display: flex;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 70px;
+  border: #424242;
+  border-radius: 1rem 1rem 0 0;
+
+  @include mixins.media-query(map-get(const.$MEDIA-QUERY-TYPE, MIN-WIDTH), small) {
+    display: none;
+  }
+
+  &--shadow {
+    box-shadow: extras.$shadow-top;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: 70px;
+    border: #424242;
+    border-radius: 1rem 1rem 0 0;
+
+    @include mixins.media-query(map-get(const.$MEDIA-QUERY-TYPE, MIN-WIDTH), small) {
+      display: none;
+    }
+  }
+
+}
