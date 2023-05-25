@@ -21,5 +21,8 @@ export const RESPONSE_STATUS = Object.freeze({
 });
 
 export const ROUTE = Object.freeze({
-    DASHBOARD: "dashboard"
+    DASHBOARD: "dashboard",
+    BUDGET: "budget",
+    TRANSACTIONS: "transactions",
+    REPORTS: "reports"
 })
