@@ -45,7 +45,7 @@ const LoginContainer = () => {
 
     const onChange = useCallback((newState) => {
         setForm({...form, ...newState});
-    }, [form]);
+    }, []);
 
     return (
         <Login handleSubmit={handleSubmit} onChange={onChange} form={form}/>
