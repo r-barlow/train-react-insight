@@ -8,10 +8,12 @@ import Budget from "./page/Budget";
 import Transactions from "./page/Transactions";
 import Reports from "./page/Reports";
 
+import NotFound from "./component/error/NotFound";
+
 import "./stylesheet/app.scss";
 
 const appRoute = () => (
-    <Route path="/" element={<AppLayout />}>
+    <Route errorElement={<NotFound />} path="/" element={<AppLayout />}>
         <Route exact path="/" element={<Dashboard />}/>
         <Route exact path={ROUTE.DASHBOARD} element={<Dashboard />}/>
         <Route exact path={ROUTE.BUDGET} element={<Budget/>}/>
