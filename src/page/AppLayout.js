@@ -1,4 +1,4 @@
-import {Outlet} from "react-router-dom";
+import {Outlet, useLocation} from "react-router-dom";
 
 import {getAuthTokenCookie} from "../tool/auth.util";
 import {NAVIGATION_ITEMS, ROUTE} from "../tool/constant";
@@ -14,7 +14,9 @@ const tokenCookie = getAuthTokenCookie();
 
 const AppLayout = () => {
 
-    let nav = NAVIGATION_ITEMS.find(item => `/${item.tag}` === window.location.pathname);
+    const location = useLocation();
+
+    let nav = NAVIGATION_ITEMS.find(item => `/${item.tag}` === location.pathname);
 
     if (nav === undefined) {
         nav = NAVIGATION_ITEMS.find(item => item.tag === ROUTE.DASHBOARD);
