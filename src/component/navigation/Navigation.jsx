@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import {NAVIGATION_ITEMS} from "../../tool/constant";
 import useNavigation from "../../hook/useNavigation";
 
+import NavigationHeader from "./NavigationHeader";
+import NavigationItem from "./NavigationItem";
+
 import {ReactComponent as MenuIcon} from "../../icon/menu.svg";
 import "./navigation.scss";
 
@@ -10,13 +13,19 @@ const Navigation = ({toggle, isToggled}) => {
 
     const {nav} = useNavigation();
 
+    const handleClick = (item) => {
+        toggle();
+    };
+
     return (
         <>
             <nav className={!isToggled ? "nav nav--hidden" : "nav"}>
-                {NAVIGATION_ITEMS.map(item => {
-                    // @todo: Create navigation header & item component.
-                    return <div key={item.tag}>{item.title}</div>
-                })}
+                <NavigationHeader toggle={toggle}/>
+                {NAVIGATION_ITEMS.map(item =>
+                    <NavigationItem key={item.tag}
+                                    navItem={item}
+                                    active={item.tag === nav.tag}
+                                    onClick={() => handleClick(item)}/>)}
             </nav>
             <section className="action-bar">
                 <MenuIcon className="action-bar__menu" alt="open menu" onClick={toggle}/>

@@ -1,0 +1,73 @@
+@use '../../stylesheet/00_settings/color' as colors;
+@use "../../stylesheet/00_settings/config" as config;
+@use "../../stylesheet/01_tools/mixin" as mixins;
+@use "../../stylesheet/01_tools/const" as const;
+
+.nav-item {
+  width: 100%;
+  justify-content: start;
+  padding-left: 1.5rem;
+  height: 60px;
+  display: flex;
+  align-items: center;
+
+  @include mixins.media-query(map-get(const.$MEDIA-QUERY-TYPE, MIN-WIDTH), small) {
+    width: 90px;
+    justify-content: center;
+    padding-left: 0;
+    position: relative;
+  }
+
+  &--hover:hover {
+    filter: map-get(colors.$theme-color, primary-filter);
+  }
+
+  &__text {
+    display: block;
+    font-weight: 300 !important;
+    font-size: 1.2rem !important;
+    padding-left: 0.5rem !important;
+    margin: 0;
+
+    @include mixins.media-query(map-get(const.$MEDIA-QUERY-TYPE, MIN-WIDTH), small) {
+      display: none;
+    }
+  }
+
+  &__selector {
+    display: none;
+    height: 80%;
+    width: 4px;
+    background-color: map-get(colors.$material-color, black);
+    position: absolute;
+    top: calc(20% / 2);
+    left: calc(100% - 4px);
+    border-radius: 2px;
+    margin-left: auto;
+  }
+
+  &--active {
+    filter: map-get(colors.$theme-color, primary-filter);
+    animation: nav-item__anim 2s ease 1;
+    animation-delay: 0s;
+  }
+
+  &--active &__selector {
+    @include mixins.media-query(map-get(const.$MEDIA-QUERY-TYPE, MIN-WIDTH), small) {
+      display: block;
+    }
+  }
+}
+
+
+@keyframes nav-item__anim {
+  15%, 60%, 90%, 100% {
+    transform: translateY(0);
+  }
+  0% {
+    transform: translateY(-10px);
+  }
+  30% {
+    transform: translateY(-5px);
+  }
+}

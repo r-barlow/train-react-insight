@@ -1,0 +1,44 @@
+@use '../../stylesheet/00_settings/util' as utils;
+@use '../../stylesheet/01_tools/mixin' as mixins;
+@use "../../stylesheet/01_tools/const" as const;
+
+.header {
+  width: 100%;
+  padding-left: 1.5rem !important;
+  padding-top: 0;
+  padding-bottom: 0;
+  justify-content: start !important;
+  display: flex;
+  align-items: center;
+  height: fit-content;
+
+  @include mixins.media-query(map-get(const.$MEDIA-QUERY-TYPE, MIN-WIDTH), small) {
+    width: 90px;
+    padding-top: 24px;
+    padding-bottom: 12px;
+    justify-content: center;
+  }
+
+  &__logo {
+    display: none;
+
+    @include mixins.media-query(map-get(const.$MEDIA-QUERY-TYPE, MIN-WIDTH), small) {
+      display: block;
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &__close {
+    display: block;
+    width: 80px;
+    height: 80px;
+    padding: 24px;
+    margin-left: auto;
+    margin-bottom: 8px;
+
+    @include mixins.media-query(map-get(const.$MEDIA-QUERY-TYPE, MIN-WIDTH), small) {
+      display: none;
+    }
+  }
+}
