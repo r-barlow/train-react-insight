@@ -32,7 +32,7 @@ const Navigation = ({toggle, isToggled, onActionClick}) => {
 
             <AppActionBar onActionClick={onActionClick}>
                 <MenuIcon className="action-bar__menu" alt="open menu" onClick={toggle}/>
-                <h2 className="action-bar__text">{nav.current.title}</h2>
+                <h2 className="action-bar__text">{nav.title}</h2>
             </AppActionBar>
             <div className={isToggled ? "nav__shadow" : "nav__shadow nav__shadow--hidden"} onClick={toggle}/>
         </>

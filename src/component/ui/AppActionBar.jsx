@@ -12,8 +12,8 @@ const AppActionBar = ({children, onActionClick}) => {
 
     return (
         <>
-            {nav.current.showAction ? <Action onActionClick={onActionClick}/> : null}
-            <div className={nav.current.showAction ? "app-action-bar" : "app-action-bar--shadow"}>
+            {nav.showAction ? <Action onActionClick={onActionClick}/> : null}
+            <div className={nav.showAction ? "app-action-bar" : "app-action-bar--shadow"}>
                 {children}
             </div>
         </>

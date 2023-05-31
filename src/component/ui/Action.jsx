@@ -24,12 +24,12 @@ const Action = ({onActionClick}) => {
         };
     }, []);
 
-    const ActionIcon = nav.current.actionIcon;
+    const ActionIcon = nav.actionIcon;
 
     return (
         <>
             <AppBar width={windowWidth}/>
-            <div className="action__button" onClick={() => onActionClick(nav.current.tag)}>
+            <div className="action__button" onClick={() => onActionClick(nav.tag)}>
                 <ActionIcon className="action__icon"/>
             </div>
         </>
