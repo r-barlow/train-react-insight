@@ -1,8 +1,9 @@
+@use '../../stylesheet/00_settings/color' as colors;
 @use "../../stylesheet/00_settings/util" as *;
 @use "../../stylesheet/01_tools/mixin" as mixins;
 @use "../../stylesheet/01_tools/const" as const;
 
-.page__header{
+.page__header {
   display: none;
 
   @include mixins.media-query(map-get(const.$MEDIA-QUERY-TYPE, MIN-WIDTH), small) {
@@ -16,5 +17,63 @@
 
   & > h3 {
     width: 100%;
+  }
+
+  &--mobile {
+    padding: 24px;
+    @include mixins.media-query(map-get(const.$MEDIA-QUERY-TYPE, MIN-WIDTH), small) {
+      display: none;
+    }
+  }
+}
+
+.mobile {
+
+  &__header{
+    display: flex;
+    align-items: center;
+    padding-bottom: 16px;
+  }
+
+  &__title{
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0;
+  }
+
+  &__logo {
+    display: block;
+    visibility: visible;
+    width: 40px;
+    height: 40px;
+    padding-right: 8px;
+  }
+}
+
+.breadcrumb {
+
+  &__item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    background: map-deep-get(colors.$material-color, gray, gray-200);
+    padding: 8px 12px 8px 10px;
+    border-radius: 24px;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    stroke: map-deep-get(colors.$material-color, gray, gray-600);
+    margin: 0 4px 0 0;
+  }
+
+  &__title {
+    font-size: 14px;
+    font-weight: 500;
+    color: map-deep-get(colors.$material-color, gray, gray-600);
+    margin: 0;
   }
 }

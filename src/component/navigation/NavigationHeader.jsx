@@ -1,4 +1,4 @@
-import {ReactComponent as Logo} from "../../icon/insight.svg";
+import Logo from "../../icon/Logo";
 import {ReactComponent as CloseIcon} from "../../icon/close.svg";
 import PropTypes from "prop-types";
 
@@ -9,7 +9,7 @@ const NavigationHeader = ({toggle}) => {
     return (
         <section className="header">
             <UserDetailsComponent isMobile={true} />
-            <Logo className="header__logo" alt="insight logo"/>
+            <Logo uniqueId="nav-header" className="header__logo" alt="insight logo"/>
             <CloseIcon className="header__close" alt="close menu" onClick={toggle}/>
         </section>
     )
